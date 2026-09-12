@@ -1,0 +1,41 @@
+<section class="users">
+  <h2>Users</h2>
+
+  <div class="search">
+    <input [(ngModel)]="keyword" placeholder="Search users..." (keyup.enter)="load()">
+    <button (click)="load()">Search</button>
+  </div>
+
+  @if (loading()) {
+    <p class="msg">Loading...</p>
+  } @else if (users().length === 0) {
+    <p class="msg">No users</p>
+  } @else {
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Role</th>
+            <th>Activated</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (u of users(); track u.id) {
+            <tr>
+              <td>{{ u.username }}</td>
+              <td>{{ u.name }} {{ u.surname }}</td>
+              <td>{{ u.email }}</td>
+              <td>{{ u.phone }}</td>
+              <td><span class="role" [class.admin]="u.role === 'Admin'">{{ u.role }}</span></td>
+              <td>{{ u.activatedAt ? 'Yes' : 'No' }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</section>

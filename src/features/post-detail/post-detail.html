@@ -1,0 +1,55 @@
+@if (post(); as p) {
+<div class="post-header">
+  <button class="back-btn" (click)="goBack()">Back</button>
+  @if (p.authorId === auth.userId() || auth.isAdmin()) {
+    <div class="post-actions">       
+      <button class="delete-post-btn" (click)="deletePost(p.id)">Delete post</button>
+    </div>
+  }
+  @if(p.authorId===auth.userId())
+  {
+    <a class="edit-post-btn" [routerLink]="['/edit', p.id]">Edit post</a>
+  }
+</div>
+@if (p.image) { <img [src]="p.image" [alt]="p.title"> }
+<h1>{{ p.title }}</h1>
+<p class="author">by {{ p.author }} · <span class="category">{{ p.categoryName }}</span></p>
+<p>{{ p.description }}</p>
+
+<div class="rating">
+  <div class="stars">
+    @for (s of stars; track s) {
+      <button class="star" [class.filled]="s <= displayRating()"
+              [disabled]="!auth.isLoggedIn()" (click)="rate(s)">★</button>
+    }
+  </div>
+  <span class="rating-info">{{ p.averageRating.toFixed(1) }} / 5 · {{ p.ratingsCount }} ocena</span>
+</div>
+
+<section class="comments">
+  <h3>Comments ({{ comments().length }})</h3>
+
+  
+  @if (auth.isLoggedIn()) {
+  <div class="add-comment">
+    <textarea [(ngModel)]="newComment" placeholder="Write a comment..."></textarea>
+    <button (click)="addComment()">Send</button>
+  </div>
+  }
+
+
+  @for (c of comments(); track c.id) {
+  <article class="comment">
+    <p class="c-author">{{ c.author }}</p>
+    <p class="c-text">{{ c.text }}</p>
+    @if (c.authorId === auth.userId() || auth.isAdmin()) {
+    <button class="c-delete" (click)="deleteComment(c.id)">Delete</button>
+    }
+  </article>
+  } @empty {
+  <p class="no-comments">No comments yet.</p>
+  }
+</section>
+} @else {
+<p>Loading...</p>
+}

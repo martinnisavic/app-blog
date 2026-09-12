@@ -1,0 +1,249 @@
+:host {
+  display: block;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem;
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: #9ca3af;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+
+  &:hover {
+    background: #1f1f1f;
+    border-color: #4a4a4a;
+    color: #f3f4f6;
+  }
+}
+
+.post-actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.edit-post-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid #2a3a5a;
+  border-radius: 8px;
+  color: #60a5fa;
+  font-size: 0.9rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+
+  &:hover {
+    background: rgba(59, 130, 246, 0.12);
+    border-color: #3b82f6;
+  }
+}
+
+.delete-post-btn {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid #4a2525;
+  border-radius: 8px;
+  color: #f87171;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+
+  &:hover {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: #6a3030;
+  }
+}
+
+img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: #0f0f0f;
+  margin-bottom: 1.5rem;
+}
+
+h1 {
+  margin: 0 0 0.4rem;
+  font-size: 2rem;
+  line-height: 1.2;
+  color: #f3f4f6;
+}
+
+.author {
+  margin: 0 0 1.5rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+.category {
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+
+  .stars {
+    display: inline-flex;
+    gap: 0.15rem;
+  }
+
+  .star {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 1.6rem;
+    line-height: 1;
+    color: #3a3a3a;
+    cursor: pointer;
+    transition: color 0.12s, transform 0.12s;
+
+    &.filled {
+      color: #fbbf24;
+    }
+
+    &:hover:not(:disabled) {
+      transform: scale(1.15);
+    }
+
+    &:disabled {
+      cursor: default;
+    }
+  }
+
+  .rating-info {
+    font-size: 0.85rem;
+    color: #9ca3af;
+  }
+}
+
+p:not(.author) {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #d1d5db;
+  white-space: pre-line;
+}
+
+.comments {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #2a2a2a;
+
+  h3 {
+    font-size: 1.2rem;
+    color: #f3f4f6;
+    margin: 0 0 1.2rem;
+  }
+}
+
+.add-comment {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+
+  textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 0.7rem 0.9rem;
+    background: #0f0f0f;
+    border: 1px solid #333;
+    border-radius: 8px;
+    color: #e5e7eb;
+    font-family: inherit;
+    font-size: 0.95rem;
+    resize: vertical;
+
+    &::placeholder { color: #6b7280; }
+    &:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+  }
+
+  button {
+    align-self: flex-end;
+    padding: 0.5rem 1.3rem;
+    background: #3b82f6;
+    border: none;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.15s;
+    &:hover { background: #2563eb; }
+  }
+}
+
+.comment {
+  position: relative;
+  background: #171717;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 0.8rem;
+
+  .c-author {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3b82f6;
+    margin: 0 0 0.3rem;
+  }
+
+  .c-text {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #d1d5db;
+    line-height: 1.5;
+    white-space: pre-line;
+    padding-right: 4.5rem;
+  }
+
+  .c-delete {
+    position: absolute;
+    top: 0.8rem;
+    right: 1rem;
+    padding: 0.25rem 0.65rem;
+    background: transparent;
+    border: 1px solid #4a2525;
+    border-radius: 6px;
+    color: #f87171;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    &:hover {
+      background: rgba(239, 68, 68, 0.15);
+      border-color: #6a3030;
+    }
+  }
+}
+
+.no-comments {
+  color: #6b7280;
+  font-style: italic;
+  font-size: 0.9rem;
+}

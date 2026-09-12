@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "title": "Dobrodošli na moj Angular blog",
+    "author": "Martin",
+    "date": "2026-06-01",
+    "tags": ["angular", "uvod"],
+    "excerpt": "Prvi post na ovom blogu — kako sam napravio sajt koji čita podatke iz JSON fajla.",
+    "image": "https://picsum.photos/seed/angular/800/400",
+    "content": "Ovo je prvi post na blogu. Ceo sajt je napravljen u Angular-u, a svi članci se učitavaju iz jednog JSON fajla pomoću HttpClient servisa.\n\nU narednim postovima ću objasniti kako funkcionišu komponente, rute i signali u modernom Angular-u."
+  },
+  {
+    "id": 2,
+    "title": "Komponente i standalone arhitektura",
+    "author": "Martin",
+    "date": "2026-06-05",
+    "tags": ["angular", "komponente"],
+    "excerpt": "Od Angular 17+ komponente su podrazumevano standalone — nema više NgModule-a.",
+    "image": "https://picsum.photos/seed/components/800/400",
+    "content": "Standalone komponente uklanjaju potrebu za NgModule. Svaka komponenta sama deklariše šta uvozi kroz `imports` niz.\n\nOvo čini aplikaciju jednostavnijom za razumevanje i lakšom za testiranje, jer su zavisnosti eksplicitne na nivou komponente."
+  },
+  {
+    "id": 3,
+    "title": "Signali — nova reaktivnost u Angular-u",
+    "author": "Martin",
+    "date": "2026-06-10",
+    "tags": ["angular", "signali", "reaktivnost"],
+    "excerpt": "Signali su novi način upravljanja stanjem koji je brži i predvidljiviji od starog pristupa.",
+    "image": "https://picsum.photos/seed/signals/800/400",
+    "content": "Signal je kontejner za vrednost koja može da se menja kroz vreme. Kada se vrednost promeni, Angular automatski ažurira samo one delove UI-ja koji zavise od tog signala.\n\nKoristimo `signal()` za kreiranje, `set()` ili `update()` za promenu, i `computed()` za izvedene vrednosti."
+  },
+  {
+    "id": 4,
+    "title": "Novi control flow: @if, @for i @switch",
+    "author": "Martin",
+    "date": "2026-06-14",
+    "tags": ["angular", "template"],
+    "excerpt": "Direktive *ngIf i *ngFor zamenjene su novim, čitljivijim sintaksama u templejtu.",
+    "image": "https://picsum.photos/seed/controlflow/800/400",
+    "content": "Novi control flow blokovi `@if`, `@for` i `@switch` ugrađeni su direktno u templejt sintaksu i ne zahtevaju uvoz direktiva.\n\nUz `@for` je obavezan `track` izraz koji pomaže Angular-u da efikasno prati promene u listi."
+  }
+]

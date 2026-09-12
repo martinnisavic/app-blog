@@ -1,0 +1,28 @@
+<div class="search">
+  <input [(ngModel)]="keyword" placeholder="Search posts..." (keyup.enter)="load()">
+  <button (click)="load()">Search</button>
+</div>
+
+@if(loading()){
+<p>Loading...</p>
+}
+@else if(posts().length==0)
+{
+<p>No posts</p>
+}
+@else{
+<div class="posts">
+    @for(post of posts(); track post.id)
+    {
+    <article class="post-card">
+        @if (post.image) {
+        <img [src]="post.image" [alt]="post.title">
+        }
+        <h3>{{ post.title }}</h3>
+        <p class="author">by {{ post.author }} · <span class="category">{{ post.categoryName }}</span></p>
+        <p class="desc">{{ post.description }}</p>
+        <a [routerLink]="['/post', post.id]">Read more →</a>
+    </article>
+    }
+</div>
+}

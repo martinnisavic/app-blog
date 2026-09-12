@@ -1,0 +1,18 @@
+<section>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <input formControlName="username" placeholder="Username">
+        @if(form.controls.username.invalid && form.controls.username.touched)
+        {
+        <small>Username is required</small>
+        }
+        <input formControlName="password" type="password" placeholder="Password">
+        @if(form.controls.password.invalid && form.controls.password.touched)
+        {
+        <small>Password is required</small>
+        }
+        @if (error()) { <p class="err">{{ error() }}</p> }
+        <button type="submit" [disabled]="form.invalid || loading()">
+            {{ loading() ? "Sending":"Login" }}
+        </button>
+    </form>
+</section>

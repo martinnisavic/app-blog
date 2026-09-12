@@ -1,0 +1,64 @@
+@if (isRegistered()) {
+<section>
+    <p class="success">
+        Registration successful! Check your email and activate your account, then log in.
+    </p>
+    <a routerLink="/login">Go to login</a>
+</section>
+} @else {
+<section>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+        <input formControlName="name" placeholder="Name">
+        <app-field-errors [control]="f.name" [messages]="{
+            required: 'Name is required',
+            minlength: 'Name must have at least 3 characters',
+            pattern: 'Letters only, first letter uppercase (e.g. Marko or Marko Markovic)'
+        }" />
+
+        <input formControlName="surname" placeholder="Surname">
+        <app-field-errors [control]="f.surname" [messages]="{
+            required: 'Surname is required',
+            minlength: 'Surname must have at least 3 characters',
+            pattern: 'Letters only, first letter uppercase'
+        }" />
+
+        <input formControlName="username" placeholder="Username">
+        <app-field-errors [control]="f.username" [messages]="{
+            required: 'Username is required',
+            pattern: 'Allowed: letters, numbers and . _ (3-30 characters)'
+        }" />
+
+        <input formControlName="email" placeholder="Email">
+        <app-field-errors [control]="f.email" [messages]="{
+            required: 'Email is required',
+            pattern: 'Must be @gmail.com, @ict.edu.rs or @yahoo.com'
+        }" />
+
+        <input formControlName="phone" placeholder="Phone Number">
+        <app-field-errors [control]="f.phone" [messages]="{
+            required: 'Phone is required',
+            pattern: 'Format: +381 6x xx xx xxx or 06x xx xx xxx'
+        }" />
+
+        <input formControlName="password" type="password" placeholder="Password">
+        <app-field-errors [control]="f.password" [messages]="{
+            required: 'Password is required',
+            minlength: 'Password must have at least 8 characters',
+            maxlength: 'Password can have at most 64 characters',
+            pattern: 'At least one lowercase, one uppercase letter, a digit and a special character'
+        }" />
+
+        <input formControlName="confPassword" type="password" placeholder="Confirm Password">
+        @if (mismatch()) {
+            <small class="field-error">Passwords don't match</small>
+        }
+
+        @if (error()) { <p class="err">{{ error() }}</p> }
+
+        <button type="submit" [disabled]="formInvalid() || loading()">
+            {{ loading() ? "Sending" : "Register" }}
+        </button>
+    </form>
+</section>
+}

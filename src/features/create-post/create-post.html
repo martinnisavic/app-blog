@@ -1,0 +1,21 @@
+<section>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <input formControlName="title" placeholder="Title" required>
+        <textarea formControlName="description" placeholder="Description" required></textarea>
+
+        <select formControlName="categoryId">
+            <option [ngValue]="0" disabled>Select category</option>
+            @for (c of categories(); track c.id) {
+                <option [ngValue]="c.id">{{ c.name }}</option>
+            }
+        </select>
+
+        <input type="file" (change)="onFile($event)" accept="image/*">
+
+        @if (error()) { <p class="err">{{ error() }}</p> }
+
+        <button type="submit" [disabled]="form.invalid || loading()">
+            {{ loading() ? 'Posting...' : 'Post' }}
+        </button>
+    </form>
+</section>
