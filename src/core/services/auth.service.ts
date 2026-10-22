@@ -32,10 +32,22 @@ export class AuthService {
         catch { return null; }
     }
 
+    private claimFromToken(key: string): string | null {
+        const token = this.getToken();
+        if (!token) return null;
+        try { return JSON.parse(atob(token.split('.')[1]))[key] ?? null; }
+        catch { return null; }
+    }
+
 
     private _userId = signal<number | null>(this.userIdFromToken());
     userId = this._userId.asReadonly();
     private _role = signal<string | null>(this.roleFromToken())
+    role = this._role.asReadonly();
+    private _username = signal<string | null>(this.claimFromToken('Username'));
+    username = this._username.asReadonly();
+    private _email = signal<string | null>(this.claimFromToken('Email'));
+    email = this._email.asReadonly();
     isAdmin = computed(() => this._role() === 'Admin');
     isUser = computed(() => this._role() === 'User');
 
@@ -53,6 +65,8 @@ export class AuthService {
                 this._isLoggedIn.set(true);
                 this._userId.set(this.userIdFromToken());
                 this._role.set(this.roleFromToken());
+                this._username.set(this.claimFromToken('Username'));
+                this._email.set(this.claimFromToken('Email'));
             }));
     }
     getToken(): string | null {
@@ -62,7 +76,9 @@ export class AuthService {
         localStorage.removeItem('token');
         this._isLoggedIn.set(false);
         this._role.set(null);
-        this._userId.set(null)
+        this._userId.set(null);
+        this._username.set(null);
+        this._email.set(null);
     }
 
     activate(code: string): Observable<string> {

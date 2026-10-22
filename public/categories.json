@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Tehnologija",
+    "description": "Vesti i tutorijali iz sveta tehnologije i programiranja.",
+    "color": "#3b82f6",
+    "featured": true,
+    "topics": ["AI", "Web razvoj", "Mobilne aplikacije", "Bezbednost"]
+  },
+  {
+    "id": 2,
+    "name": "Sport",
+    "description": "Fudbal, košarka, tenis i sve ostalo iz sveta sporta.",
+    "color": "#22c55e",
+    "featured": false,
+    "topics": ["Fudbal", "Košarka", "Tenis"]
+  },
+  {
+    "id": 3,
+    "name": "Muzika",
+    "description": "Albumi, koncerti, izvođači i muzičke preporuke.",
+    "color": "#a855f7",
+    "featured": true,
+    "topics": ["Rok", "Pop", "Hip-hop", "Klasična"]
+  },
+  {
+    "id": 4,
+    "name": "Film",
+    "description": "Recenzije filmova i serija, najave i preporuke.",
+    "color": "#ef4444",
+    "featured": false,
+    "topics": ["Akcija", "Drama", "Dokumentarni"]
+  },
+  {
+    "id": 5,
+    "name": "Putovanja",
+    "description": "Destinacije, saveti za putovanja i lične priče.",
+    "color": "#f59e0b",
+    "featured": true,
+    "topics": ["Evropa", "Azija", "Saveti", "Budžet"]
+  },
+  {
+    "id": 6,
+    "name": "Hrana",
+    "description": "Recepti, restorani i gastronomske preporuke.",
+    "color": "#14b8a6",
+    "featured": false,
+    "topics": ["Recepti", "Restorani", "Zdrava ishrana"]
+  }
+]

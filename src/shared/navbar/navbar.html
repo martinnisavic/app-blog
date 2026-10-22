@@ -3,7 +3,9 @@
   <div class="right">
     <a routerLink="/">Home</a>
     @if (authService.isLoggedIn()) {
+      <a routerLink="/categories">Categories</a>
       <a routerLink="/createPost">New post</a>
+      <a routerLink="/profile">Profile</a>
       @if (authService.isAdmin()) {
         <a routerLink="/users">Users</a>
       }

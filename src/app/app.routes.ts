@@ -9,6 +9,10 @@ import { adminGuard } from '../core/guard/admin.guard';
 import { Activate } from '../features/auth/activateacc/activate-account';
 import { EditPost } from '../features/edit-post/edit-post';
 import { Users } from '../features/users/users';
+import { Categories } from '../features/categories/categories';
+import { CategoryPosts } from '../features/category-posts/category-posts';
+import { UserPosts } from '../features/user-posts/user-posts';
+import { Profile } from '../features/profile/profile';
 
 export const routes: Routes = [
     {
@@ -37,5 +41,17 @@ export const routes: Routes = [
     },
     {
         path: 'users', component: Users, title: 'Users', canActivate: [adminGuard]
+    },
+    {
+        path: 'users/:id/posts', component: UserPosts, title: 'User posts', canActivate: [adminGuard]
+    },
+    {
+        path: 'categories', component: Categories, title: 'Categories', canActivate: [authGuard]
+    },
+    {
+        path: 'categories/:id/posts', component: CategoryPosts, title: 'Category posts', canActivate: [authGuard]
+    },
+    {
+        path: 'profile', component: Profile, title: 'Profile', canActivate: [authGuard]
     },
 ];

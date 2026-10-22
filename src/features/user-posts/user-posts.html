@@ -1,0 +1,19 @@
+<section class="user-posts">
+  <a class="back" routerLink="/users">← Nazad na korisnike</a>
+  <h2>Postovi{{ author() ? ' — ' + author() : '' }}</h2>
+
+  @if (loading()) {
+    <p class="msg">Loading...</p>
+  } @else if (posts().length === 0) {
+    <p class="msg">Ovaj korisnik nema postova.</p>
+  } @else {
+    <ul class="list">
+      @for (p of posts(); track p.id) {
+        <li>
+          <a [routerLink]="['/post', p.id]">{{ p.title }}</a>
+          <span class="cat">{{ p.categoryName }}</span>
+        </li>
+      }
+    </ul>
+  }
+</section>

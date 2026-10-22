@@ -1,0 +1,27 @@
+<section class="categories">
+  <h2>Kategorije</h2>
+  <p class="sub">Pregled tema o kojima se piše na blogu.</p>
+
+  @if (loading()) {
+    <p class="msg">Loading...</p>
+  } @else {
+    <div class="grid">
+      @for (c of categories(); track c.id) {
+        <a class="cat-card" [style.border-top-color]="c.color"
+           [routerLink]="['/categories', c.id, 'posts']" [queryParams]="{ name: c.name }">
+          <div class="head">
+            <h3>{{ c.name }}</h3>
+            @if (c.featured) { <span class="badge">Izdvojeno</span> }
+          </div>
+          <p class="desc">{{ c.description }}</p>
+          <div class="topics">
+            @for (t of c.topics; track t) {
+              <span class="topic">{{ t }}</span>
+            }
+          </div>
+          <span class="view">Pogledaj postove →</span>
+        </a>
+      }
+    </div>
+  }
+</section>

@@ -3,6 +3,7 @@ import { Injectable, inject } from "@angular/core";
 import { environment } from "../types/enviroment";
 import { Observable } from "rxjs";
 import { Category } from "../types/post.types";
+import { LocalCategory } from "../types/local-category.types";
 
 @Injectable({ providedIn: 'root' })
 export class CategoryService {
@@ -11,5 +12,9 @@ export class CategoryService {
 
     getCategories(): Observable<Category[]> {
         return this.http.get<Category[]>(this.URL);
+    }
+
+    getLocalCategories(): Observable<LocalCategory[]> {
+        return this.http.get<LocalCategory[]>('/categories.json');
     }
 }

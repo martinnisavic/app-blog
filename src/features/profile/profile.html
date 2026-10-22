@@ -1,0 +1,27 @@
+<section class="profile">
+  <div class="card">
+    <div class="avatar">{{ (auth.username() || '?').charAt(0).toUpperCase() }}</div>
+    <div class="info">
+      <h2>{{ auth.username() }}</h2>
+      <p class="email">{{ auth.email() }}</p>
+      <span class="role" [class.admin]="auth.isAdmin()">{{ auth.role() }}</span>
+    </div>
+  </div>
+
+  <h3>Moji postovi ({{ posts().length }})</h3>
+
+  @if (loading()) {
+    <p class="msg">Loading...</p>
+  } @else if (posts().length === 0) {
+    <p class="msg">Još nemaš postova. <a routerLink="/createPost">Napravi prvi →</a></p>
+  } @else {
+    <ul class="list">
+      @for (p of posts(); track p.id) {
+        <li>
+          <a [routerLink]="['/post', p.id]">{{ p.title }}</a>
+          <span class="cat">{{ p.categoryName }}</span>
+        </li>
+      }
+    </ul>
+  }
+</section>

@@ -21,6 +21,7 @@
             <th>Phone</th>
             <th>Role</th>
             <th>Activated</th>
+            <th>Postovi</th>
           </tr>
         </thead>
         <tbody>
@@ -32,6 +33,7 @@
               <td>{{ u.phone }}</td>
               <td><span class="role" [class.admin]="u.role === 'Admin'">{{ u.role }}</span></td>
               <td>{{ u.activatedAt ? 'Yes' : 'No' }}</td>
+              <td><a [routerLink]="['/users', u.id, 'posts']">Vidi postove</a></td>
             </tr>
           }
         </tbody>

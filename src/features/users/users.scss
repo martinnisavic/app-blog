@@ -75,6 +75,12 @@ thead th {
 tbody tr:last-child td { border-bottom: none; }
 tbody tr:hover { background: #1a1a1a; }
 
+td a {
+  color: #60a5fa;
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+}
+
 .role {
   display: inline-block;
   padding: 0.15rem 0.55rem;

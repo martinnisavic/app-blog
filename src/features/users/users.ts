@@ -1,11 +1,12 @@
 import { Component, inject, OnInit, signal } from "@angular/core";
 import { FormsModule } from "@angular/forms";
+import { RouterLink } from "@angular/router";
 import { UserService } from "../../core/services/user.service";
 import { User } from "../../core/types/user.types";
 
 @Component({
     selector: 'app-users',
-    imports: [FormsModule],
+    imports: [FormsModule, RouterLink],
     templateUrl: './users.html',
     styleUrl: './users.scss'
 })
